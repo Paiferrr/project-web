@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h1 class="text-center">Привет, {{ user.username }}</h1>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-center mb-4">
+              <img src="{{ url_for('static', filename=file) }}" class="rounded-circle profile-photo" alt="Profile photo">
+            </div>
+            <p>Ваши данные:</p>
+            <p>Email: {{ user.email }}</p>
+            {% if data == True %}
+            <p>Имя: {{ user.name }};</p>
+            <p>Фамилия: {{ user.surname }};</p>
+            <p>Номер телефона: {{ user.number }};</p>
+            {% endif %}
+
+            <div class="text-center">
+              <a href="{{ url_for('logout') }}" class="btn btn-secondary profile-button">Выход</a>
+              <a href="{{ url_for('edit') }}" class="btn btn-secondary profile-button">Редактировать профиль</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
